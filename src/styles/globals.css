@@ -1,0 +1,35 @@
+/*
+ * HeroUI v3 + Tailwind v4 是 CSS-first：不需要 tailwind.config.js。
+ * 导入顺序至关重要 —— 必须先 tailwindcss，再 @heroui/styles。
+ */
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/*
+ * ★ 库无关语义令牌（主题的唯一真源）。
+ *
+ * 用 @theme 注册的变量会被 Tailwind 生成对应的工具类（bg-canvas / text-fg-muted …）。
+ * 业务层与布局层只准用这套「我们自己命名」的语义类，绝不直接用 HeroUI 的
+ * bg-content1 / text-default-* / bg-primary 等专有类 —— 后者由 boundary 守卫测试拦截。
+ *
+ * 这样换 UI 库时：业务层 className 一行不动，只需让新库的适配器组件
+ * 继续映射到同一套语义变量即可。主题真正做到「不绑库」。
+ */
+@theme {
+  --color-canvas: #f8fafc;       /* 页面底色 */
+  --color-surface: #ffffff;      /* 卡片 / 面板 */
+  --color-line: #e2e8f0;         /* 边框 / 分隔线 */
+  --color-fg: #0f172a;           /* 主文本 */
+  --color-fg-muted: #64748b;     /* 次要文本 */
+  --color-fg-subtle: #94a3b8;    /* 占位 / 弱化文本 */
+  --color-accent: #2563eb;       /* 品牌强调色 */
+  --color-accent-soft: #eff6ff;  /* 品牌浅色背景 */
+  --color-positive: #16a34a;     /* 成功 / 启用 */
+  --color-negative: #dc2626;     /* 危险 / 错误 */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}

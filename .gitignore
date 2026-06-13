@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+
+# TanStack Router 自动生成，不入库
+src/routeTree.gen.ts
+.tanstack
+
+# TypeScript 增量构建信息
+*.tsbuildinfo
+
+# 日志
+npm-debug.log*
+pnpm-debug.log*

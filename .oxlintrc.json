@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@heroui/react",
+            "message": "禁止在业务层直接 import HeroUI，请从 @/ui 引入，以保持 UI 库可替换。"
+          }
+        ],
+        "patterns": [
+          {
+            "group": ["@heroui/*"],
+            "message": "禁止在业务层直接 import HeroUI 子包，请从 @/ui 引入。"
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/ui/adapters/**"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
+}
